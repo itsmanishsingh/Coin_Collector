@@ -1,4 +1,4 @@
-## In this application,I have designed and developed a simple "Coin-Collector" application using Plain JavaScript
+## In this application,I have designed and developed a simple "Coin-Collector" application using pure JavaScript
 
 - Single user can participate in the game.
 
