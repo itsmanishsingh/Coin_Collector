@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #root{
+            width:100vw;
+            height: 100vh;
+            background-color: aqua;
+            position: relative;
+        }
+        #score{
+            position: absolute;
+            left: 10px;
+            top: 10 px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root">
+        <h1 id="score">Score : 0</h1>
+    </div>
+    <script>
+        let root = document.getElementById("root");
+        let scoreheading = document.getElementById("score");
+        let score =0;
+        // let coindrop = new Audio("./coin.mp3");
+        
+        setInterval( ()=>{
+            let image = document.createElement("img");
+            let available = true;
+
+            image.setAttribute("src","https://w7.pngwing.com/pngs/399/947/png-transparent-dollar-coin-currency-coin-bank-coin-dollar-currency-coin-3d-icon-thumbnail.png");
+            image.style.setProperty("height" ,"50px");
+            image.style.setProperty("position" ,"absolute");
+            
+            let left = parseInt(Math.random()*window.innerWidth);
+            let top = parseInt(Math.random()*window.innerHeight);
+            image.style.setProperty("left" ,`${left}px`);
+            image.style.setProperty("top" ,`${top}px`);
+            root.appendChild(image);
+
+            setTimeout(()=>{
+                if(available){
+                    root.removeChild(image);
+                }
+            } , 3000);
+
+
+            image.onmouseover = ()=>{
+                let coindrop = new Audio("./coin.mp3");
+                console.log(`ping`);
+                root.removeChild(image);
+                available = false;  
+                score +=10;
+                scoreheading.innerHTML = `Score : ${score}`;
+                coindrop.play();
+
+            }
+
+        },1000);
+
+
+    </script>
+</body>
+</html>
